@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxmnjg3md2xb"]
+
+[ext_resource type="Script" uid="uid://726nrkyb0gg0" path="res://scripts/stats_ui.gd" id="1_dlitj"]
+[ext_resource type="Texture2D" uid="uid://h20suhctpard" path="res://art/2bitcoin.png" id="2_yjjkw"]
+[ext_resource type="FontFile" uid="uid://dt4i0gke5ihu8" path="res://art/font/rainyhearts.ttf" id="3_ko8qh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc1b0"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1vv0"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="StatsUI" type="CanvasLayer"]
+script = ExtResource("1_dlitj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bar" type="NinePatchRect" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 331.0
+offset_bottom = 126.0
+texture = ExtResource("2_yjjkw")
+region_rect = Rect2(3, 3, 10, 10)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Warmth" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Bar/VBoxContainer/Warmth"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ko8qh")
+theme_override_font_sizes/font_size = 32
+text = "Warmth "
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Bar/VBoxContainer/Warmth"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ko8qh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_rc1b0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i1vv0")
+step = 1.0
+
+[node name="Stamina" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Bar/VBoxContainer/Stamina"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ko8qh")
+theme_override_font_sizes/font_size = 32
+text = "Stamina"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Bar/VBoxContainer/Stamina"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ko8qh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_rc1b0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i1vv0")
+step = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

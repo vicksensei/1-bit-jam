@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://bnofy26gk3aqb"]
+
+[ext_resource type="PackedScene" uid="uid://w84t0kon4njw" path="res://scenes/prefabs/player.tscn" id="1_i6kc1"]
+[ext_resource type="PackedScene" uid="uid://bldckdpe7i0l0" path="res://scenes/prefabs/item_amounts.tscn" id="1_xipcj"]
+[ext_resource type="PackedScene" uid="uid://cqxmnjg3md2xb" path="res://scenes/prefabs/stats_ui.tscn" id="2_5hqf6"]
+[ext_resource type="PackedScene" uid="uid://du55ip0evj840" path="res://scenes/base.tscn" id="3_e65j4"]
+[ext_resource type="PackedScene" uid="uid://1xbcnapu2rbp" path="res://scenes/prefabs/snow.tscn" id="4_83mmk"]
+[ext_resource type="PackedScene" uid="uid://cawdb5g8v2k8r" path="res://scenes/prefabs/item_pickup.tscn" id="6_km2yi"]
+[ext_resource type="PackedScene" uid="uid://di36ts300cltt" path="res://scenes/prefabs/bunny.tscn" id="7_7ixwj"]
+[ext_resource type="PackedScene" uid="uid://bfeod67a1d4c2" path="res://scenes/prefabs/object_spawn.tscn" id="9_n77pw"]
+[ext_resource type="PackedScene" uid="uid://duy28coe7w15b" path="res://scenes/prefabs/camp_fire.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bqcci34xfk211" path="res://scenes/prefabs/color_replacer.tscn" id="15_k2pmo"]
+
+[node name="Game" type="Node"]
+
+[node name="Item amounts" parent="." instance=ExtResource("1_xipcj")]
+
+[node name="StatsUI" parent="." instance=ExtResource("2_5hqf6")]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Base" parent="World" instance=ExtResource("3_e65j4")]
+
+[node name="Bunny" parent="World" instance=ExtResource("7_7ixwj")]
+position = Vector2(85, 60)
+
+[node name="Bunny2" parent="World" instance=ExtResource("7_7ixwj")]
+position = Vector2(471, 325)
+
+[node name="Bunny3" parent="World" instance=ExtResource("7_7ixwj")]
+position = Vector2(798, 219)
+
+[node name="CampFire" parent="World" instance=ExtResource("10_vtaks")]
+position = Vector2(559, 480)
+
+[node name="player" parent="World" instance=ExtResource("1_i6kc1")]
+position = Vector2(124, 109)
+
+[node name="Camera2D" type="Camera2D" parent="World/player"]
+zoom = Vector2(3, 3)
+
+[node name="Snow" parent="World/player/Camera2D" instance=ExtResource("4_83mmk")]
+visible = false
+position = Vector2(-3, -117)
+amount = 500
+lifetime = 5.0
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(-30, 1)
+gravity = Vector2(0, 50)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+radial_accel_min = -1.0
+tangential_accel_max = 20.0
+damping_min = 5.0
+damping_max = 5.0
+scale_amount_max = 2.0
+script = null
+
+[node name="ObjectSpawn" parent="." instance=ExtResource("9_n77pw")]
+itemPrefab = ExtResource("6_km2yi")
+
+[node name="ColorReplacer" parent="." instance=ExtResource("15_k2pmo")]
+visible = false

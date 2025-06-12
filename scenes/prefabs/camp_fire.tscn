@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://duy28coe7w15b"]
+
+[ext_resource type="Script" uid="uid://dvlb5x5wkd8u6" path="res://scripts/camp_fire.gd" id="1_rjlpv"]
+[ext_resource type="Texture2D" uid="uid://if7mj6thvoi1" path="res://art/1bitTilesLumberWinter.png" id="2_3b6aa"]
+[ext_resource type="PackedScene" uid="uid://bupnjp2av8pmr" path="res://scenes/prefabs/flame.tscn" id="3_q76t8"]
+[ext_resource type="Texture2D" uid="uid://b4p27q5ly8mi6" path="res://art/Circle outlines.png" id="4_3b6aa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bohqv"]
+radius = 49.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q76t8"]
+atlas = ExtResource("4_3b6aa")
+region = Rect2(96, 0, 64, 64)
+
+[node name="CampFire" type="Node2D"]
+script = ExtResource("1_rjlpv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_3b6aa")
+hframes = 4
+vframes = 5
+frame = 6
+
+[node name="Flame" parent="." instance=ExtResource("3_q76t8")]
+position = Vector2(0, -7)
+
+[node name="Warmth Radius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warmth Radius"]
+texture_filter = 1
+shape = SubResource("CircleShape2D_bohqv")
+debug_color = Color(0.635674, 0.25644, 0, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_q76t8")

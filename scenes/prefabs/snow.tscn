@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://1xbcnapu2rbp"]
+
+[ext_resource type="Script" uid="uid://du2icfg276da8" path="res://scripts/snow.gd" id="1_20hxi"]
+
+[node name="Snow" type="CPUParticles2D"]
+position = Vector2(36, -56)
+amount = 100
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+gravity = Vector2(0, 300)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_20hxi")
