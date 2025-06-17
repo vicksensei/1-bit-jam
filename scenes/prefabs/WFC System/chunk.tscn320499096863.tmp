@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bett1in5vjf1x"]
+
+[ext_resource type="Script" uid="uid://dt84it6f21whj" path="res://scripts/map/chunk.gd" id="1_jxuko"]
+[ext_resource type="Script" uid="uid://cawp27vafegx6" path="res://scripts/map/tile_map_layer.gd" id="1_vxnbi"]
+[ext_resource type="TileSet" uid="uid://bvn2che3l2a7y" path="res://art/tilesets/SnowIceTiles.tres" id="2_d3o4v"]
+[ext_resource type="TileSet" uid="uid://dunwu7vq0mxlv" path="res://art/tilesets/ForegroundObject.tres" id="4_tu32s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tu32s"]
+light_mode = 2
+
+[node name="Chunk" type="Node2D"]
+script = ExtResource("1_jxuko")
+
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_tu32s")
+tile_map_data = PackedByteArray(0, 0, 17, 0, 13, 0, 0, 0, 0, 0, 3, 0, 0, 0)
+tile_set = ExtResource("2_d3o4v")
+script = ExtResource("1_vxnbi")
+metadata/_custom_type_script = "uid://cawp27vafegx6"
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = ExtResource("4_tu32s")
+
+[node name="Bunny Parent" type="Node2D" parent="."]

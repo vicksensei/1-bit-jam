@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ple0jcexosvj"]
+[gd_scene load_steps=10 format=3 uid="uid://ple0jcexosvj"]
 
 [ext_resource type="Script" uid="uid://dt0nbb10ls2ko" path="res://scripts/tree.gd" id="1_fkcmk"]
 [ext_resource type="Texture2D" uid="uid://if7mj6thvoi1" path="res://art/1bitTilesLumberWinter.png" id="1_w4n5w"]
@@ -112,6 +112,8 @@ _data = {
 &"Shake": SubResource("Animation_u6dja")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b14i"]
+
 [node name="Tree" type="StaticBody2D"]
 script = ExtResource("1_fkcmk")
 
@@ -137,3 +139,8 @@ offset = Vector2(0, -16)
 libraries = {
 &"": SubResource("AnimationLibrary_fbojg")
 }
+
+[node name="DuplicateProtection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateProtection"]
+shape = SubResource("CircleShape2D_5b14i")

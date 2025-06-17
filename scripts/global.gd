@@ -1,5 +1,6 @@
 extends Node
 
+var debugMode := false
 
 enum GameState{
 	starting,
@@ -16,6 +17,7 @@ enum itemType{
 	coal,
 }
 var player:Player
+var world:WorldController
 var currentState: GameState = GameState.starting
 
 var currentLevel
@@ -59,6 +61,10 @@ var debug_data = {
 var pen:Area2D
 var penPoly: PackedVector2Array
 
+func log(text):
+	if debugMode == true:
+		print(text)
+
 func get_random_point_in_polygon(area:Area2D, polygon: PackedVector2Array) -> Vector2:
 	if polygon.is_empty():
 		return Vector2.ZERO
@@ -82,3 +88,15 @@ func get_random_point_in_polygon(area:Area2D, polygon: PackedVector2Array) -> Ve
 			}
 			return area.global_position + local_point
 	return  Vector2.ZERO
+
+
+var chunk_data:Dictionary={
+  "background": {
+	"snow": { "weight": 0.8, "allowed_neighbors": ["snow", "ice"] },
+	"ice": { "weight": 0.2,"allowed_neighbors": ["snow", "ice"], "influences_neighbors": true }
+  },
+  "foreground": {
+	"tree": { "spawn_on": "snow", "min_distance": 3, "chance": 0.3 },
+	"stone": { "spawn_on": "snow", "min_distance": 2, "chance": 0.2 }
+  }
+}

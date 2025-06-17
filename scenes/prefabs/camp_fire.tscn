@@ -32,10 +32,7 @@ texture_filter = 1
 shape = SubResource("CircleShape2D_bohqv")
 debug_color = Color(0.635674, 0.25644, 0, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Marker" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.6, 1.6)
 texture = SubResource("AtlasTexture_q76t8")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://bnofy26gk3aqb"]
+[gd_scene load_steps=18 format=4 uid="uid://bnofy26gk3aqb"]
 
 [ext_resource type="PackedScene" uid="uid://w84t0kon4njw" path="res://scenes/prefabs/player.tscn" id="1_i6kc1"]
 [ext_resource type="PackedScene" uid="uid://bldckdpe7i0l0" path="res://scenes/prefabs/item_amounts.tscn" id="1_xipcj"]
 [ext_resource type="PackedScene" uid="uid://cqxmnjg3md2xb" path="res://scenes/prefabs/stats_ui.tscn" id="2_5hqf6"]
 [ext_resource type="Script" uid="uid://bkxmccm8mhwqj" path="res://scripts/map/WorldController.gd" id="3_kvpfn"]
-[ext_resource type="Script" uid="uid://coa4anemgivvl" path="res://scripts/camera_control.gd" id="5_rysoc"]
 [ext_resource type="PackedScene" uid="uid://cawdb5g8v2k8r" path="res://scenes/prefabs/item_pickup.tscn" id="6_km2yi"]
 [ext_resource type="PackedScene" uid="uid://dckh44cr6l1vd" path="res://scenes/prefabs/snow_control.tscn" id="7_vtaks"]
 [ext_resource type="TileSet" uid="uid://bvn2che3l2a7y" path="res://art/tilesets/SnowIceTiles.tres" id="8_kvuet"]
@@ -36,7 +35,6 @@ position = Vector2(124, 109)
 
 [node name="Camera2D" type="Camera2D" parent="World/player"]
 zoom = Vector2(3, 3)
-script = ExtResource("5_rysoc")
 
 [node name="SnowControl" parent="World/player/Camera2D" instance=ExtResource("7_vtaks")]
 

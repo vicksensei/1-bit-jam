@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://du55ip0evj840"]
+[gd_scene load_steps=15 format=4 uid="uid://du55ip0evj840"]
 
 [ext_resource type="Script" uid="uid://ymll0h3ymqw0" path="res://scripts/homeBase.gd" id="1_3v5je"]
 [ext_resource type="TileSet" uid="uid://bvn2che3l2a7y" path="res://art/tilesets/SnowIceTiles.tres" id="1_odhf2"]
@@ -9,12 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://0anlijmtg7hi" path="res://scenes/prefabs/rock.tscn" id="6_cdrfd"]
 [ext_resource type="PackedScene" uid="uid://bupnjp2av8pmr" path="res://scenes/prefabs/flame.tscn" id="7_pc1wa"]
 [ext_resource type="PackedScene" uid="uid://bv3il4k4v8tb7" path="res://scenes/prefabs/debug_node.tscn" id="9_qutmk"]
+[ext_resource type="Script" uid="uid://cdw8u6rcaq5fm" path="res://scripts/indoors.gd" id="10_du40w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xddp6"]
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qutmk"]
 size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omojh"]
+size = Vector2(113, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoopj"]
+size = Vector2(192, 111)
 
 [node name="PlayerHomeBase" type="Node2D"]
 y_sort_enabled = true
@@ -49,3 +56,17 @@ position = Vector2(410, 262)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="penTrigger"]
 position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_qutmk")
+
+[node name="Indoors" type="Node2D" parent="."]
+script = ExtResource("10_du40w")
+
+[node name="Warmth Radius" type="Area2D" parent="Indoors"]
+position = Vector2(537, 153)
+
+[node name="House" type="CollisionShape2D" parent="Indoors/Warmth Radius"]
+position = Vector2(46.5, 70)
+shape = SubResource("RectangleShape2D_omojh")
+
+[node name="Pen" type="CollisionShape2D" parent="Indoors/Warmth Radius"]
+position = Vector2(-121, 62.5)
+shape = SubResource("RectangleShape2D_yoopj")

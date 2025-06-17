@@ -199,3 +199,6 @@ script = ExtResource("4_fb4nx")
 libraries = {
 &"": SubResource("AnimationLibrary_03r4k")
 }
+
+[node name="RunTimer" type="Timer" parent="."]
+autostart = true

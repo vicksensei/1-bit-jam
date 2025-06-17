@@ -4,6 +4,11 @@ class_name Destroyable
 
 var direction = 1
 
+func checkRadius(body):
+	if body is Destroyable and not body == self:
+		queue_free()
+	
+
 func getHit(body, dir):
 	if body == self:
 		print(name + " is hit! HP: "+ str(hp))

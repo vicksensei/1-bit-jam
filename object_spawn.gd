@@ -1,21 +1,14 @@
 extends Node
+class_name object_Spawner
 
 @export var itemPrefab:PackedScene
-#@export var rock:PackedScene
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	Signalbus.spawnWood.connect(SpawnWood)
 	Signalbus.spawnRock.connect(SpawnRock)
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 func SpawnWood(pos:Vector2):	
 	SpawnItem("wood", pos, 3, 4)	
-
 
 func SpawnRock(pos:Vector2):	
 	SpawnItem("rock", pos, 3, 4)

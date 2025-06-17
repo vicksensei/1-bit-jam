@@ -22,12 +22,21 @@ func updateStamina(st):
 	Global.playerStamina += st
 	Global.playerStamina = clamp(Global.playerStamina,0,100)
 	Stamina.value = Global.playerStamina
+	if Global.playerStamina <=0:
+		Signalbus.outOfStamina.emit()
+		Global.log("Game Over!")
 	
 func updateWarmth():
 	if Global.player.isWarm == true:
-		Global.playerTemp += 2
+		Global.log("gaining Warmth")
+		Global.playerTemp += 3
 	else:
-		Global.playerTemp -= 1
+		if Global.playerTemp > 0:
+			Global.log("losing Warmth")
+			Global.playerTemp -= 1
+		else:
+			Global.log("losing Stamina")
+			Signalbus.updateStamina.emit(-1)
 
 	Global.playerTemp = clamp(Global.playerTemp,0,100)
 	Warmth.value = Global.playerTemp

@@ -2,10 +2,13 @@ extends Destroyable
 class_name tree
 @onready var animation_player = $AnimationPlayer
 @onready var top = $Top
+@onready var duplicate_protection = $DuplicateProtection
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = 6
 	Signalbus.hitTree.connect(getHit)
+	duplicate_protection.body_entered.connect(checkRadius)
 	pass # Replace with function body.
 
 func Fall():

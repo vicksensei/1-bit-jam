@@ -2,6 +2,8 @@ extends Node
 
 signal startSnow
 signal endSnow
+signal goIndoors
+signal goOutdoors
 signal itemPickup(item_type)
 
 signal hitTree(whichTree, direction)
@@ -17,4 +19,8 @@ signal clearFacing
 signal updateStamina(stamDelta)
 signal updateWarmth(warmDelta)
 
-signal saveBunnies()
+signal outOfStamina
+
+signal saveBunnies
+
+signal buildFire(direction)
