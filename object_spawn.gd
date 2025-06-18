@@ -20,9 +20,8 @@ func SpawnItem(item, pos, min, max):
 		add_child(i)
 		var roll = randf()
 		match item:
-			"rock":
-				if roll< .25: i.Spawn(Global.itemType.coal, pos)	
-				else: 	i.Spawn(Global.itemType.stone, pos)	
+			"rock":	
+				i.Spawn(Global.itemType.stone, pos)	
 			"wood": 
 				if roll< .25: i.Spawn(Global.itemType.food, pos)	
 				else: i.Spawn(Global.itemType.wood, pos)	

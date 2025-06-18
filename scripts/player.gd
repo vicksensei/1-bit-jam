@@ -32,6 +32,9 @@ func  _ready():
 
 
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		Global.log("Pause Pressed Event")
+		Signalbus.pause.emit()
 	if Global.currentState == Global.GameState.playing:
 		if currentPlayerState == playerState.walking and canUseTool:
 			if Input.is_action_just_pressed("playeraction"):
@@ -46,12 +49,13 @@ func _physics_process(_delta):
 					await get_tree().create_timer(.3).timeout
 					currentPlayerState = playerState.walking
 				else:
-					print("Out of Stamina!")
+					Global.log("Out of Stamina!")
 
+		
 		if Input.is_action_just_pressed("playereat"):
-			print("food:" + str(Global.items.food))
+			Global.log("food:" + str(Global.items.food))
 			if Global.items.food > 0:
-				Global.items.food = Global.items.food -1
+				Signalbus.useItem.emit(int(Global.itemType.food),1)
 				Signalbus.updateStamina.emit(50)
 		
 		var movement_direction:= Vector2(

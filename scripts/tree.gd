@@ -33,6 +33,8 @@ func TakeDamage():
 		Fall()
 	elif hp == 0:
 		Signalbus.spawnWood.emit(global_position)
+		visible= false
+		await get_tree().create_timer(.5).timeout
 		queue_free()
 		
 func DestroyTop():

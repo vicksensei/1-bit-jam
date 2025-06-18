@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://osj1xqr3pswe"]
+
+[ext_resource type="FontFile" uid="uid://c2tsmemhdsat6" path="res://art/font/pixel_arial_14/pixel-arial-14.otf" id="1_6x2e2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y78vy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyjle"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("1_6x2e2")
+Button/styles/hover = SubResource("StyleBoxFlat_y78vy")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_y78vy")
+Button/styles/normal = SubResource("StyleBoxFlat_kyjle")
+Button/styles/pressed = SubResource("StyleBoxFlat_y78vy")

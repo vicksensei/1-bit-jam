@@ -76,19 +76,21 @@ func enableShadow():
 	shadow.visible = true
 	animation_player.play("float")
 func _physics_process(delta):
-	var direction
-	if isActive and not target == null:
-		direction = global_position.move_toward( target.global_position,3)
-		global_position = direction
-		if global_position.distance_to(target.global_position) <.1:
-			Signalbus.itemPickup.emit(iType)
-			queue_free()
-	else:
-		if global_position.distance_to(spawnPos) > .1:
-			direction =global_position.move_toward( spawnPos,3)
+	
+	if Global.currentState == Global.GameState.playing:
+		var direction
+		if isActive and not target == null:
+			direction = global_position.move_toward( target.global_position,3)
 			global_position = direction
-		elif not isActive:
-			isActive = true
-			shadow.visible = true 
-					
+			if global_position.distance_to(target.global_position) <.1:
+				Signalbus.itemPickup.emit(iType)
+				queue_free()
+		else:
+			if global_position.distance_to(spawnPos) > .1:
+				direction =global_position.move_toward( spawnPos,3)
+				global_position = direction
+			elif not isActive:
+				isActive = true
+				shadow.visible = true 
+						
 	pass

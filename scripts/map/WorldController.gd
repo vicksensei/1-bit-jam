@@ -140,6 +140,8 @@ func _is_blank_snow_radius(center: Vector2i, radius: int) -> bool:
 	return true
 
 func _try_spawn_bunny_near_tree(tree_pos: Vector2i, rng: RandomNumberGenerator):
+	if spawnBunnies == false:
+		return
 	# Try to spawn a bunny within BUNNY_SPAWN_RADIUS tiles of the tree, in a blank spot
 	var bunny_candidates = []
 	for y in range(tree_pos.y - BUNNY_SPAWN_RADIUS, tree_pos.y + BUNNY_SPAWN_RADIUS + 1):

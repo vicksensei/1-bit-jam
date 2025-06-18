@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqxmnjg3md2xb"]
+[gd_scene load_steps=7 format=3 uid="uid://cqxmnjg3md2xb"]
 
 [ext_resource type="Script" uid="uid://726nrkyb0gg0" path="res://scripts/stats_ui.gd" id="1_dlitj"]
 [ext_resource type="Texture2D" uid="uid://h20suhctpard" path="res://art/2bitcoin.png" id="2_yjjkw"]
 [ext_resource type="FontFile" uid="uid://dt4i0gke5ihu8" path="res://art/font/rainyhearts.ttf" id="3_ko8qh"]
+[ext_resource type="LabelSettings" uid="uid://c50wyklr6urn2" path="res://scenes/prefabs/Labels/DePixelLabel.tres" id="4_8t5fj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc1b0"]
 bg_color = Color(1, 1, 1, 1)
@@ -64,6 +65,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ko8qh")
 theme_override_font_sizes/font_size = 32
 text = "Warmth "
+label_settings = ExtResource("4_8t5fj")
 vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Bar/VBoxContainer/Warmth"]
@@ -90,6 +92,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ko8qh")
 theme_override_font_sizes/font_size = 32
 text = "Stamina"
+label_settings = ExtResource("4_8t5fj")
 vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Bar/VBoxContainer/Stamina"]

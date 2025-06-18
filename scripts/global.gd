@@ -1,6 +1,6 @@
 extends Node
 
-var debugMode := false
+var debugMode := true
 
 enum GameState{
 	starting,
@@ -27,8 +27,8 @@ var playerStamina = 100
 var playerTemp = 100
 
 var items ={
-	"wood": 0,
-	"stone": 0,
+	"wood": 10,
+	"stone": 10,
 	"coal": 0,
 	"food": 0,
 	"bunnies": 0,
@@ -36,6 +36,65 @@ var items ={
 
 func _ready():
 	currentState = GameState.playing
+
+func getItemCount(item:itemType) -> int:
+	match item:
+		itemType.wood:
+			return items.wood
+		itemType.stone:
+			return items.stone
+		itemType.food:
+			return items.food
+		# itemType.coal:
+		# 	return items.coal
+		itemType.bunnies:
+			return items.bunnies
+	# Default case if item type is not recognized
+	return 0
+
+func useItem(item:itemType, amount:int):
+	match item:
+		itemType.wood:
+			if items.wood < amount:
+				Global.log("Not enough wood to use")
+				return
+			if amount <= 0:
+				Global.log("Invalid amount to use")
+				return
+			if amount > items.wood:
+				Global.log("Using more wood than available")
+				return
+			items.wood -= amount
+			Global.log("Used wood: " + str(amount))
+		itemType.stone:
+			if items.stone < amount:
+				Global.log("Not enough stone to use")
+				return
+			if amount <= 0:
+				Global.log("Invalid amount to use")
+				return
+			if amount > items.stone:
+				Global.log("Using more stone than available")
+				return
+			Global.log("Used stone: " + str(amount))
+			items.stone -= amount
+		itemType.food:
+			if items.food < amount:
+				Global.log("Not enough food to use")
+				return
+			if amount <= 0:
+				Global.log("Invalid amount to use")
+				return
+			if amount > items.food:
+				Global.log("Using more food than available")
+				return
+			Global.log("Used food: " + str(amount))
+			items.food -= amount
+		# itemType.coal:
+		# 	items.coal -= amount
+		# itemType.bunnies:
+		# 	items.bunnies -= amount
+	Signalbus.itemAdded.emit()
 	
 func addItem(item:itemType):
 	match item:
@@ -45,11 +104,11 @@ func addItem(item:itemType):
 			items.stone +=1
 		itemType.food:
 			items.food +=1
-		itemType.coal:
-			items.coal +=1
+		# itemType.coal:
+		# 	items.coal +=1
 		itemType.bunnies:
-			items.wood +=1
-			
+			items.bunnies +=1
+	Signalbus.itemAdded.emit()
 
 var debug_data = {
 "polygon": [],

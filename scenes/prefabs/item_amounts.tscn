@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bldckdpe7i0l0"]
+[gd_scene load_steps=15 format=3 uid="uid://bldckdpe7i0l0"]
 
 [ext_resource type="Script" uid="uid://cg4fterocdd1" path="res://scripts/item_amounts.gd" id="1_t588i"]
 [ext_resource type="Texture2D" uid="uid://h20suhctpard" path="res://art/2bitcoin.png" id="2_g6drf"]
 [ext_resource type="Texture2D" uid="uid://if7mj6thvoi1" path="res://art/1bitTilesLumberWinter.png" id="3_i83vu"]
 [ext_resource type="FontFile" uid="uid://dt4i0gke5ihu8" path="res://art/font/rainyhearts.ttf" id="4_a0qti"]
+[ext_resource type="LabelSettings" uid="uid://c50wyklr6urn2" path="res://scenes/prefabs/Labels/DePixelLabel.tres" id="5_y5ba2"]
+[ext_resource type="Texture2D" uid="uid://ck7e6wt66lsf0" path="res://art/1bitkeys.png" id="6_y5ba2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3j11"]
 atlas = ExtResource("3_i83vu")
@@ -20,6 +22,22 @@ region = Rect2(16, 64, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_thwwm"]
 atlas = ExtResource("3_i83vu")
 region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fj04"]
+atlas = ExtResource("6_y5ba2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilsjp"]
+atlas = ExtResource("6_y5ba2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5ba2"]
+atlas = ExtResource("6_y5ba2")
+region = Rect2(0, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q5ue"]
+atlas = ExtResource("6_y5ba2")
+region = Rect2(48, 16, 16, 16)
 
 [node name="Item amounts" type="CanvasLayer"]
 script = ExtResource("1_t588i")
@@ -42,8 +60,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -88.0
 offset_top = -199.0
-offset_right = -28.0
-offset_bottom = -19.0
+offset_right = -4.0
+offset_bottom = -63.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_g6drf")
@@ -60,115 +78,308 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -37.0
 offset_top = -80.0
-offset_right = 25.0
+offset_right = 36.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Wood" type="NinePatchRect" parent="Control/Bar/VBoxContainer"]
+[node name="Wood" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
 layout_mode = 2
-region_rect = Rect2(3, 3, 10, 10)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="Icon" type="TextureRect" parent="Control/Bar/VBoxContainer/Wood"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 2
 texture = SubResource("AtlasTexture_y3j11")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Count" type="Label" parent="Control/Bar/VBoxContainer/Wood"]
-layout_mode = 1
-offset_left = 29.0
-offset_top = 17.0
-offset_right = 51.0
-offset_bottom = 33.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_a0qti")
 text = "x0"
+label_settings = ExtResource("5_y5ba2")
 
-[node name="Stone" type="NinePatchRect" parent="Control/Bar/VBoxContainer"]
+[node name="Stone" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
 layout_mode = 2
-region_rect = Rect2(3, 3, 10, 10)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="Icon" type="TextureRect" parent="Control/Bar/VBoxContainer/Stone"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 2
 texture = SubResource("AtlasTexture_4v6cm")
+expand_mode = 2
 
 [node name="Count" type="Label" parent="Control/Bar/VBoxContainer/Stone"]
-layout_mode = 1
-offset_left = 29.0
-offset_top = 17.0
-offset_right = 51.0
-offset_bottom = 33.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_a0qti")
 text = "x0"
+label_settings = ExtResource("5_y5ba2")
 
-[node name="Food" type="NinePatchRect" parent="Control/Bar/VBoxContainer"]
+[node name="Food" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
 layout_mode = 2
-region_rect = Rect2(3, 3, 10, 10)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="Icon" type="TextureRect" parent="Control/Bar/VBoxContainer/Food"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 2
 texture = SubResource("AtlasTexture_3p550")
+expand_mode = 2
 
 [node name="Count" type="Label" parent="Control/Bar/VBoxContainer/Food"]
-layout_mode = 1
-offset_left = 29.0
-offset_top = 17.0
-offset_right = 51.0
-offset_bottom = 33.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_a0qti")
 text = "x0"
+label_settings = ExtResource("5_y5ba2")
 
-[node name="Coal" type="NinePatchRect" parent="Control/Bar/VBoxContainer"]
+[node name="Coal" type="HBoxContainer" parent="Control/Bar/VBoxContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Control/Bar/VBoxContainer/Coal"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_thwwm")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="Control/Bar/VBoxContainer/Coal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "x0"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="BuildCampfireIndicator" type="NinePatchRect" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -199.0
+offset_right = -88.0
+offset_bottom = -107.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_g6drf")
 region_rect = Rect2(3, 3, 10, 10)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Icon" type="TextureRect" parent="Control/Bar/VBoxContainer/Coal"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = SubResource("AtlasTexture_thwwm")
-
-[node name="Count" type="Label" parent="Control/Bar/VBoxContainer/Coal"]
-layout_mode = 1
-offset_left = 29.0
-offset_top = 17.0
-offset_right = 51.0
-offset_bottom = 33.0
+[node name="ActionLabel" type="Label" parent="Control/BuildCampfireIndicator"]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 185.0
+offset_bottom = 86.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_a0qti")
-text = "x0"
+text = "Build Campfire 
+"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="Wood" type="HBoxContainer" parent="Control/BuildCampfireIndicator"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 32)
+offset_left = 2.0
+offset_top = 27.0
+offset_right = 114.0
+offset_bottom = 59.0
+
+[node name="Icon" type="TextureRect" parent="Control/BuildCampfireIndicator/Wood"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y3j11")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Count" type="Label" parent="Control/BuildCampfireIndicator/Wood"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "10"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="Stone" type="HBoxContainer" parent="Control/BuildCampfireIndicator"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 32)
+offset_left = 2.0
+offset_top = 52.0
+offset_right = 114.0
+offset_bottom = 84.0
+
+[node name="Icon" type="TextureRect" parent="Control/BuildCampfireIndicator/Stone"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_4v6cm")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="Control/BuildCampfireIndicator/Stone"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "10"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BuildCampfireIndicator"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_8fj04")
+expand_mode = 3
+
+[node name="EatIndicator" type="NinePatchRect" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -107.0
+offset_right = -88.0
+offset_bottom = -63.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_g6drf")
+region_rect = Rect2(3, 3, 10, 10)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ActionLabel" type="Label" parent="Control/EatIndicator"]
+offset_left = 6.0
+offset_top = 12.0
+offset_right = 96.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "Eat"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="Food" type="HBoxContainer" parent="Control/EatIndicator"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 32)
+offset_left = 39.0
+offset_top = 6.0
+offset_right = 109.0
+offset_bottom = 38.0
+
+[node name="Icon" type="TextureRect" parent="Control/EatIndicator/Food"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3p550")
+expand_mode = 2
+
+[node name="Count" type="Label" parent="Control/EatIndicator/Food"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "1"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="TextureRect" type="TextureRect" parent="Control/EatIndicator"]
+offset_left = 112.0
+offset_top = 4.0
+offset_right = 144.0
+offset_bottom = 36.0
+texture = SubResource("AtlasTexture_ilsjp")
+expand_mode = 3
+
+[node name="DashIndicator" type="NinePatchRect" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -63.0
+offset_right = -4.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_g6drf")
+region_rect = Rect2(3, 3, 10, 10)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ActionLabel" type="Label" parent="Control/DashIndicator"]
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "Dash   1S/sec"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="TextureRect" type="TextureRect" parent="Control/DashIndicator"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 3.0
+offset_right = 228.0
+offset_bottom = 35.0
+texture = SubResource("AtlasTexture_y5ba2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="GatherIndicator" type="NinePatchRect" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -239.0
+offset_right = -4.0
+offset_bottom = -199.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_g6drf")
+region_rect = Rect2(3, 3, 10, 10)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ActionLabel" type="Label" parent="Control/GatherIndicator"]
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a0qti")
+text = "Gather        5S"
+label_settings = ExtResource("5_y5ba2")
+
+[node name="TextureRect" type="TextureRect" parent="Control/GatherIndicator"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 3.0
+offset_right = 228.0
+offset_bottom = 35.0
+texture = SubResource("AtlasTexture_1q5ue")
+expand_mode = 2
+stretch_mode = 4

@@ -108,7 +108,8 @@ var currentPallette
 func _ready():
 	currentPallette = "Default"
 	setPallette()
-	displayUI()
+	Signalbus.showColors.connect(displayUI)
+	Signalbus.pause.connect(hideUI)
 	inverted.pressed.connect(setPallette)
 	close_button.pressed.connect(hideUI)
 	control.visible = false
@@ -132,11 +133,11 @@ func setPallette():
 func toggleUI():
 	control.visible = !control.visible
 	
-
 func clearChildren(parentNode:Node):
 	for n in parentNode.get_children():
 		n.queue_free()
 func displayUI():
+	toggleUI()
 	clearChildren(button_area)
 	for p in pallettes:
 		var pal = pallettes[p]
@@ -170,6 +171,6 @@ func genStyle(colors:Array[Color])-> StyleBoxFlat:
 		style.set_content_margin_all(10)
 		return style
 
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel"):
-		toggleUI()
+#func _unhandled_input(event):
+	#if event.is_action_pressed("ui_cancel"):
+		#toggleUI()

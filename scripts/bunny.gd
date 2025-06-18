@@ -55,4 +55,5 @@ func goToPen():
 		followScript.target = null
 		new_target.queue_free()
 		isRescued = true
+		Global.addItem(Global.itemType.bunnies)
 	pass

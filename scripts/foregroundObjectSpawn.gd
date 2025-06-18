@@ -71,7 +71,9 @@ func spawn(pos:Vector2i, object, offset = false):
 
 func buildFire(dname):
 	print("build fire "+dname)
-	if true: #check for resources for fire
+	var stone = Global.getItemCount(Global.itemType.stone)
+	var wood = Global.getItemCount(Global.itemType.wood)
+	if stone >= 10 and wood >= 10: #check for resources for fire		
 		var direction
 		match dname:
 			"up": direction = Vector2(0,-1)
@@ -85,6 +87,8 @@ func buildFire(dname):
 		var foregroundTile = get_cell_atlas_coords(tileLocation)
 		print(foregroundTile)
 		if backgroundTile == Global.world.TILE_TYPES.snow.atlas_pos and foregroundTile == Vector2i(-1,-1):
+			Signalbus.useItem.emit(Global.itemType.wood,10)
+			Signalbus.useItem.emit(Global.itemType.stone,10)
 			spawn(tileLocation, campFireObj)
 		
 	pass

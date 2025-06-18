@@ -1,0 +1,156 @@
+[gd_scene load_steps=10 format=3 uid="uid://m6xrsglfd4c2"]
+
+[ext_resource type="Texture2D" uid="uid://h20suhctpard" path="res://art/2bitcoin.png" id="1_m5nnl"]
+[ext_resource type="Script" uid="uid://bv0rlj2uvn13t" path="res://scripts/objectives_ui.gd" id="1_p1epa"]
+[ext_resource type="LabelSettings" uid="uid://c50wyklr6urn2" path="res://scenes/prefabs/Labels/DePixelLabel.tres" id="2_p1epa"]
+[ext_resource type="Texture2D" uid="uid://if7mj6thvoi1" path="res://art/1bitTilesLumberWinter.png" id="3_pjkwl"]
+[ext_resource type="FontFile" uid="uid://dt4i0gke5ihu8" path="res://art/font/rainyhearts.ttf" id="4_booqr"]
+[ext_resource type="Texture2D" uid="uid://dohdm3m8itsw6" path="res://art/Bunnyanimation.png" id="5_ufkbo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mayum"]
+atlas = ExtResource("3_pjkwl")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7070"]
+atlas = ExtResource("3_pjkwl")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b87p3"]
+atlas = ExtResource("5_ufkbo")
+region = Rect2(0, 0, 20, 20)
+
+[node name="objectivesUI" type="CanvasLayer"]
+script = ExtResource("1_p1epa")
+
+[node name="Bar" type="NinePatchRect" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -482.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 125.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+texture = ExtResource("1_m5nnl")
+region_rect = Rect2(3, 3, 10, 10)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Objectives" type="VBoxContainer" parent="Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BuildHouse" type="Control" parent="Bar/Objectives"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bar/Objectives/BuildHouse"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectiveName" type="Label" parent="Bar/Objectives/BuildHouse/VBoxContainer"]
+layout_mode = 2
+text = "Rebuild your home:"
+label_settings = ExtResource("2_p1epa")
+
+[node name="StoneObjective" type="HBoxContainer" parent="Bar/Objectives/BuildHouse/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 32)
+layout_mode = 2
+
+[node name="StoneObjectiveText" type="Label" parent="Bar/Objectives/BuildHouse/VBoxContainer/StoneObjective"]
+layout_mode = 2
+text = "- Gather 100 Stone"
+label_settings = ExtResource("2_p1epa")
+
+[node name="Icon" type="TextureRect" parent="Bar/Objectives/BuildHouse/VBoxContainer/StoneObjective"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mayum")
+expand_mode = 2
+
+[node name="StoneCount" type="Label" parent="Bar/Objectives/BuildHouse/VBoxContainer/StoneObjective"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_booqr")
+text = "50"
+label_settings = ExtResource("2_p1epa")
+
+[node name="WoodObjective" type="HBoxContainer" parent="Bar/Objectives/BuildHouse/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 32)
+layout_mode = 2
+
+[node name="WoodObjectiveName" type="Label" parent="Bar/Objectives/BuildHouse/VBoxContainer/WoodObjective"]
+layout_mode = 2
+text = "- Gather 100 Wood"
+label_settings = ExtResource("2_p1epa")
+
+[node name="Icon" type="TextureRect" parent="Bar/Objectives/BuildHouse/VBoxContainer/WoodObjective"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_g7070")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="WoodCount" type="Label" parent="Bar/Objectives/BuildHouse/VBoxContainer/WoodObjective"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_booqr")
+text = "10"
+label_settings = ExtResource("2_p1epa")
+
+[node name="RescueBunnies" type="Control" parent="Bar/Objectives"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bar/Objectives/RescueBunnies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectiveName" type="Label" parent="Bar/Objectives/RescueBunnies/VBoxContainer"]
+layout_mode = 2
+text = "Bring back your bunnies:"
+label_settings = ExtResource("2_p1epa")
+
+[node name="BunnyObjective" type="HBoxContainer" parent="Bar/Objectives/RescueBunnies/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+
+[node name="BunnyObjectiveText" type="Label" parent="Bar/Objectives/RescueBunnies/VBoxContainer/BunnyObjective"]
+layout_mode = 2
+text = "- Rescue 15 bunnies"
+label_settings = ExtResource("2_p1epa")
+
+[node name="Icon" type="TextureRect" parent="Bar/Objectives/RescueBunnies/VBoxContainer/BunnyObjective"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b87p3")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BunnyCount" type="Label" parent="Bar/Objectives/RescueBunnies/VBoxContainer/BunnyObjective"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_booqr")
+text = "15"
+label_settings = ExtResource("2_p1epa")
