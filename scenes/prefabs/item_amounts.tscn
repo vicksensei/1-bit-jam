@@ -180,6 +180,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="ActionLabel" type="Label" parent="Control/BuildCampfireIndicator"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 6.0
 offset_right = 185.0
@@ -193,6 +194,7 @@ label_settings = ExtResource("5_y5ba2")
 [node name="Wood" type="HBoxContainer" parent="Control/BuildCampfireIndicator"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
+layout_mode = 0
 offset_left = 2.0
 offset_top = 27.0
 offset_right = 114.0
@@ -214,6 +216,7 @@ label_settings = ExtResource("5_y5ba2")
 [node name="Stone" type="HBoxContainer" parent="Control/BuildCampfireIndicator"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
+layout_mode = 0
 offset_left = 2.0
 offset_top = 52.0
 offset_right = 114.0
@@ -263,6 +266,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="ActionLabel" type="Label" parent="Control/EatIndicator"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 12.0
 offset_right = 96.0
@@ -275,6 +279,7 @@ label_settings = ExtResource("5_y5ba2")
 [node name="Food" type="HBoxContainer" parent="Control/EatIndicator"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 32)
+layout_mode = 0
 offset_left = 39.0
 offset_top = 6.0
 offset_right = 109.0
@@ -293,6 +298,7 @@ text = "1"
 label_settings = ExtResource("5_y5ba2")
 
 [node name="TextureRect" type="TextureRect" parent="Control/EatIndicator"]
+layout_mode = 0
 offset_left = 112.0
 offset_top = 4.0
 offset_right = 144.0
@@ -323,6 +329,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="ActionLabel" type="Label" parent="Control/DashIndicator"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 9.0
 offset_right = 187.0
@@ -365,6 +372,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="ActionLabel" type="Label" parent="Control/GatherIndicator"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 9.0
 offset_right = 187.0

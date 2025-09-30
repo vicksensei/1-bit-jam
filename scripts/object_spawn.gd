@@ -8,10 +8,10 @@ func _ready():
 	Signalbus.spawnRock.connect(SpawnRock)
 
 func SpawnWood(pos:Vector2):	
-	SpawnItem("wood", pos, 3, 4)	
+	SpawnItem("wood", pos, 13, 14)	
 
 func SpawnRock(pos:Vector2):	
-	SpawnItem("rock", pos, 3, 4)
+	SpawnItem("rock", pos, 13, 14)
 	
 func SpawnItem(item, pos, min, max):
 	var rand = randi_range(min,max)
@@ -23,7 +23,7 @@ func SpawnItem(item, pos, min, max):
 			"rock":	
 				i.Spawn(Global.itemType.stone, pos)	
 			"wood": 
-				if roll< .25: i.Spawn(Global.itemType.food, pos)	
+				if roll< .15: i.Spawn(Global.itemType.food, pos)	
 				else: i.Spawn(Global.itemType.wood, pos)	
 		
 	

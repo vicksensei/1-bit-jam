@@ -1,9 +1,20 @@
 extends Node
 
+signal startNewGame
+
 signal pause
 signal unPause
+signal fadein
+signal fadeout
+signal fadeinDone
+signal fadeoutDone
 signal showColors
 signal hideColors
+signal toggleReplace(mode:bool)
+signal gameOver
+#Text
+signal showText(text)
+signal textFinished
 
 signal startSnow
 signal endSnow
@@ -32,3 +43,6 @@ signal outOfStamina
 signal saveBunnies
 
 signal buildFire(direction)
+
+#Sounds:
+signal playTypeSound

@@ -24,6 +24,7 @@ func onPause():
 		onExit()
 func onColor():
 	Signalbus.showColors.emit()
+	print("Colors Clicked")
 	
 func onExit():
 	if Global.currentState == Global.GameState.paused:

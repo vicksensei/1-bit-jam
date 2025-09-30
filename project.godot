@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="1 Bit Jam"
+config/name="Lost in the Snow"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://ctnq8eg418wds"
 
 [autoload]
 
@@ -106,5 +106,6 @@ scroll_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

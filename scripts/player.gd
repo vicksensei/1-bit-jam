@@ -23,13 +23,13 @@ var currentPlayerState:playerState = playerState.walking
 
 var followers :Array = []
 
-
 func  _ready():
 	Global.player = $"."
 	Signalbus.facingTree.connect(enableChop)
 	Signalbus.clearFacing.connect(disableChop)
+	Signalbus.saveBunnies.connect(freeBunnies)
 	run_timer.timeout.connect(tickStamina)
-
+	
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -107,3 +107,6 @@ func enableChop(body):
 func disableChop():
 	currentActionTarget = null
 	canUseTool = false;
+
+func freeBunnies():
+	followers = []

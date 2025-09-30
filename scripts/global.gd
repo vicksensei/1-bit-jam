@@ -1,6 +1,9 @@
 extends Node
 
-var debugMode := true
+var debugMode := false
+
+var houseBuilt = false
+var bunniesFound = false
 
 enum GameState{
 	starting,
@@ -25,6 +28,8 @@ var currentItemLayer
 
 var playerStamina = 100
 var playerTemp = 100
+var mainscene
+
 
 var items ={
 	"wood": 10,
@@ -35,7 +40,7 @@ var items ={
 }
 
 func _ready():
-	currentState = GameState.playing
+	currentState = GameState.starting
 
 func getItemCount(item:itemType) -> int:
 	match item:
@@ -148,6 +153,18 @@ func get_random_point_in_polygon(area:Area2D, polygon: PackedVector2Array) -> Ve
 			return area.global_position + local_point
 	return  Vector2.ZERO
 
+func GameOver():
+	currentState = GameState.paused
+	Signalbus.outOfStamina.emit()
+	Signalbus.fadeout.emit()
+	await Signalbus.fadeoutDone
+	Signalbus.showText.emit("... Looks like this is the end for me...")
+	await Signalbus.textFinished
+	Signalbus.showText.emit("... I hope my animal friends will survive without me...")
+	await Signalbus.textFinished
+	
+	
+	
 
 var chunk_data:Dictionary={
   "background": {

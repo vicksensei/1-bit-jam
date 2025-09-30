@@ -1,7 +1,7 @@
 extends Node2D	# This script extends the Node2D class, making it a 2D node in the scene
 class_name  WorldController
 
-@onready var background : TileMapDual= $Background	# Reference to the Background TileMap node
+@onready var background : TileMapDual = $Background	# Reference to the Background TileMap node
 @onready var foreground :  = $Foreground	# Reference to the Foreground TileMap node
 @onready var bunny_parent : Node2D= $"Bunny Parent"	# Reference to the BunnyParent node for managing bunnies
 @onready var player := Global.player		# Reference to the player object from a global singleton
@@ -39,7 +39,7 @@ const TILE_TYPES: Dictionary = {
 	
 # Constants for tile generation
 const TILE_SIZE := 16					# Size of each tile in pixels
-const BUFFER_RADIUS := 16				# Number of tiles to generate around the player
+const BUFFER_RADIUS := 14				# Number of tiles to generate around the player
 var generated_tiles := {}				# Dictionary to keep track of generated tiles and their types
 
 # Foreground placement radii and bunny spawn chance as constants
@@ -49,38 +49,58 @@ const BUNNY_RADIUS := 1			# Radius of blank snow required for bunny placement
 const BUNNY_SPAWN_RADIUS := 2	# Distance from tree to search for bunny spawn
 const BUNNY_SPAWN_CHANCE := 0.1 # 1% chance to spawn a bunny near a tree
 
+const SNOW_TILE:= Vector2i(0, 3)
+const ICE_TILE:=Vector2i(2, 1)
 var spawnBunnies := false
-
-
-
+var isLoaded = false
 func _ready():
 	# Called when the node is added to the scene
 	Global.world = self
+	Signalbus.houseBuilt.connect(enable_bunnies)
+	#_generate_starting_area()
+	background.update_full_tileset()
 	var used_cells = background.get_used_cells()	# Get all currently used cells in the TileMap
+	#await get_tree().create_timer(1).timeout
+	print(used_cells.size())
+	#print(used_cells[0])
+	#print(used_cells[used_cells.size()-1])
 	for cell in used_cells:
 		var atlas = background.get_cell_atlas_coords(cell)	# Get the atlas coords for this cell
 		var tile_type = "snow"	# Default tile type
-		if atlas == Vector2i(2, 1):
+		if atlas == ICE_TILE:
 			tile_type = "ice"	# If atlas matches, set as ice
-		elif atlas == Vector2i(0, 3):
+		elif atlas == SNOW_TILE:
 			tile_type = "snow"	# If atlas matches, set as snow
 		# Add more mappings if you have more tile types
 		generated_tiles[cell] = tile_type	# Store the tile type in the dictionary
+	isLoaded = true
 
+func _generate_starting_area():
+	var area_size = BUFFER_RADIUS +2
+	for x in range(-area_size, area_size):
+		for y in range(-area_size, area_size):
+			background.set_cell(Vector2i(x,y),0,SNOW_TILE)
+	background.update_full_tileset()
+	
 func _process(_delta):
-	# Called every frame
-	var player_tile := Vector2i(
-		floor(player.global_position.x / TILE_SIZE),	# Calculate player's tile X position
-		floor(player.global_position.y / TILE_SIZE)		# Calculate player's tile Y position
-	)
+	if isLoaded:
+		# Called every frame
+		var player_tile := Vector2i(
+			floor(player.global_position.x / TILE_SIZE),	# Calculate player's tile X position
+			floor(player.global_position.y / TILE_SIZE)		# Calculate player's tile Y position
+		)
 
-	# Loop through a square area around the player to generate tiles
-	for y in range(player_tile.y - BUFFER_RADIUS, player_tile.y + BUFFER_RADIUS + 1):
-		for x in range(player_tile.x - BUFFER_RADIUS, player_tile.x + BUFFER_RADIUS + 1):
-			var pos = Vector2i(x, y)	# Current tile position
-			if not generated_tiles.has(pos):	# If tile hasn't been generated yet
-				_generate_tile(pos)			# Generate the tile
-	_find_and_expand_solo_ice()	# Ensure solo ice tiles get a cardinal neighbor
+		# Loop through a square area around the player to generate tiles
+		for y in range(player_tile.y - BUFFER_RADIUS, player_tile.y + BUFFER_RADIUS + 1):
+			for x in range(player_tile.x - BUFFER_RADIUS, player_tile.x + BUFFER_RADIUS + 1):
+				var pos = Vector2i(x, y)	# Current tile position
+				if not generated_tiles.has(pos):	# If tile hasn't been generated yet
+					_generate_tile(pos)			# Generate the tile
+		_find_and_expand_solo_ice()	# Ensure solo ice tiles get a cardinal neighbor
+
+func enable_bunnies():
+	spawnBunnies = true
+	Global.player.global_position = Vector2(80,80)
 
 # Use TILE_TYPES for atlas lookups instead of _tilename_to_atlas
 func _get_atlas_coords(tilename: String) -> Vector2i:

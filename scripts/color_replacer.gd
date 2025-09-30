@@ -110,13 +110,14 @@ func _ready():
 	setPallette()
 	Signalbus.showColors.connect(displayUI)
 	Signalbus.pause.connect(hideUI)
+	Signalbus.toggleReplace.connect(toggleOverlay)
 	inverted.pressed.connect(setPallette)
 	close_button.pressed.connect(hideUI)
 	control.visible = false
 	pass # Replace with function body.
 
-func hideUI():
-	control.visible = false
+func toggleOverlay(mode:bool):
+	overlay.visible = mode
 
 func changeColor(TwoColorArr):
 	overlay.material.set_shader_parameter("blackReplacement", TwoColorArr[0])
@@ -132,12 +133,20 @@ func setPallette():
 	
 func toggleUI():
 	control.visible = !control.visible
-	
+
+func hideUI():
+	control.visible = false
+
+func showUI():
+	control.visible = true
+
 func clearChildren(parentNode:Node):
 	for n in parentNode.get_children():
 		n.queue_free()
+
 func displayUI():
-	toggleUI()
+	showUI()
+	print("showing UI")
 	clearChildren(button_area)
 	for p in pallettes:
 		var pal = pallettes[p]

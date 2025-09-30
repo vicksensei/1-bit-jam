@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://byne3qjb3p127"]
+
+[ext_resource type="FontFile" uid="uid://cvyxbc24sg8wf" path="res://art/font/pixel_arial_11/PIXEARG_.TTF" id="1_i07t1"]
+
+[resource]
+font = ExtResource("1_i07t1")

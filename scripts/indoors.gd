@@ -8,10 +8,10 @@ func _ready():
 	warmth_radius.body_exited.connect(goOutdoors)
 	pass # Replace with function body.
 func goIndoors(body):
-	if body is Player:
+	if body is Player and Global.houseBuilt == true:
 		Signalbus.goIndoors.emit()
 	pass
 func goOutdoors(body):
-	if body is Player:
+	if body is Player and Global.houseBuilt == true:
 		Signalbus.goOutdoors.emit()
 	pass

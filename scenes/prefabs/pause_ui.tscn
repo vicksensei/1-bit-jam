@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://h20suhctpard" path="res://art/2bitcoin.png" id="1_n7l6e"]
 [ext_resource type="Script" uid="uid://dl3rnf63k7vuw" path="res://scripts/pause_ui.gd" id="1_x7oc0"]
 [ext_resource type="LabelSettings" uid="uid://371p05himbux" path="res://scenes/prefabs/Labels/PauseMenuLarge.tres" id="2_n7l6e"]
-[ext_resource type="Theme" uid="uid://osj1xqr3pswe" path="res://Scenes/prefabs/Labels/pause_ui_theme.tres" id="4_x7oc0"]
+[ext_resource type="Theme" uid="uid://osj1xqr3pswe" path="res://scenes/prefabs/Labels/pause_ui_theme.tres" id="4_x7oc0"]
 
 [node name="PauseUI" type="CanvasLayer"]
 script = ExtResource("1_x7oc0")

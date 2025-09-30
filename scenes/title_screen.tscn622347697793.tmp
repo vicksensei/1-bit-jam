@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://jjbctuv60kpa"]
+
+[ext_resource type="Theme" uid="uid://osj1xqr3pswe" path="res://scenes/prefabs/Labels/pause_ui_theme.tres" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://drgdci271d33i" path="res://scripts/title_screen.gd" id="1_s4lrb"]
+[ext_resource type="FontFile" uid="uid://d0nlcqew7g33t" path="res://art/font/nokia_cellphone/nokiafc22.ttf" id="2_sa3yf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s4lrb"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(640, -10, 0)
+emission_shape = 3
+emission_box_extents = Vector3(640, 10, 1)
+gravity = Vector3(0, 70, 0)
+scale_max = 6.0
+color = Color(0, 0, 0, 1)
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_use_scale = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sa3yf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dc4i4"]
+polygon = PackedVector2Array(50, 420, 450, 420, 450, 430, 50, 430)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4lrb"]
+font = ExtResource("2_sa3yf")
+font_size = 64
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mgrm8"]
+polygon = PackedVector2Array(0, 720, 0, 710, 1280, 710, 1280, 720)
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_s4lrb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect"]
+position = Vector2(640, -10)
+amount = 1000
+lifetime = 2.5
+emission_shape = 3
+emission_rect_extents = Vector2(640, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 30.0
+initial_velocity_max = 80.0
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.03
+radial_accel_min = -0.1
+tangential_accel_max = 0.6
+damping_min = 5.0
+damping_max = 5.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/ColorRect"]
+amount = 1000
+lifetime = 20.0
+speed_scale = 3.0
+collision_base_size = 0.5
+visibility_rect = Rect2(0, 0, 1280, 720)
+process_material = SubResource("ParticleProcessMaterial_s4lrb")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 850.0
+offset_top = -300.0
+offset_right = 1250.0
+offset_bottom = -50.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sa3yf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/ColorRect/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 36
+text = "Start
+"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/ColorRect/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 36
+text = "Settings
+"
+
+[node name="Exit" type="Button" parent="CanvasLayer/ColorRect/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 36
+text = "Exit"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CanvasLayer/ColorRect/Panel"]
+position = Vector2(-50, -420)
+occluder = SubResource("OccluderPolygon2D_dc4i4")
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 1027.0
+offset_bottom = 196.0
+text = "Lost in the Snow"
+label_settings = SubResource("LabelSettings_s4lrb")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="CanvasLayer"]
+position = Vector2(0, 10)
+occluder = SubResource("OccluderPolygon2D_mgrm8")

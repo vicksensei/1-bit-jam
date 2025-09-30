@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddh5uk84ryyrj"]
+
+[ext_resource type="Script" uid="uid://buikcuj1gokac" path="res://scripts/dialogue.gd" id="1_jwyou"]
+[ext_resource type="LabelSettings" uid="uid://byne3qjb3p127" path="res://scenes/prefabs/Labels/narrative.tres" id="2_3n4vj"]
+[ext_resource type="AudioStream" uid="uid://uvkl0raqijr1" path="res://sounds/Blop-Mark_DiAngelo-79054334.wav" id="3_bfpow"]
+[ext_resource type="Texture2D" uid="uid://ck7e6wt66lsf0" path="res://art/1bitkeys.png" id="4_fyky8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_led2e"]
+atlas = ExtResource("4_fyky8")
+region = Rect2(48, 16, 16, 16)
+
+[node name="Dialogue" type="CanvasLayer"]
+script = ExtResource("1_jwyou")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ContinueMark" type="TextureRect" parent="ColorRect"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 942.0
+offset_top = 520.0
+offset_right = 982.0
+offset_bottom = 560.0
+texture = SubResource("AtlasTexture_led2e")
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="Label" parent="ColorRect/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "This is sample text"
+label_settings = ExtResource("2_3n4vj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bfpow")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
